@@ -11,7 +11,7 @@ const { Configuration, OpenAIApi }=openAI
 
 const configuration = new Configuration({
     organization: "org-hhDspFEWExuwuHz98gtNWI5L",
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY
 });
 const openai = new OpenAIApi(configuration);
 
@@ -21,7 +21,7 @@ const app = express();
 app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
 }))
-const port = 3001;
+const port = process.env.port || 3001;
 app.use(bodyparser.json());
 
 app.post('/',async (req,res)=>{
@@ -37,7 +37,7 @@ app.post('/',async (req,res)=>{
     const response = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `${message}`,
-        max_tokens: 100,
+        max_tokens: 1000,
         temperature: 0,
     });
     
