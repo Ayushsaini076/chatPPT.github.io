@@ -10,7 +10,7 @@ function App() {
   const handleSubmit=async (e)=>{
     e.preventDefault();
     
-    await fetch('http://localhost:3001/',{
+    await fetch('https://chatpptbackend.onrender.com',{
       method:'POST',
       headers:{
         "Content-Type":'application/json'
@@ -68,7 +68,7 @@ function App() {
         <br />
         <button type='submit' >submit</button>
         <div>{response}</div>
-        {/* <img src={path} alt="" />  */}
+        <img src={path} alt="" /> 
       </form>
       <button onClick={handleGen}>Generate PPT</button>
     </div>
